@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cartinha de Amor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-image: url(/assets/hellokit.png);
+            background-size: 800px;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Archivo', sans-serif;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .container {
+            background-color: rgb(38, 38, 38);
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(206, 15, 177, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgb(167, 16, 193);
+            user-select: none;
+        }
+
+        .container h1 {
+            color: beige;
+            margin-bottom: 25px;
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+        #letter-content {
+            color: beige;
+            line-height: 1.7;
+            text-align: left;
+            min-height: 300px;
+            font-size: 16px;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .botao-voltar {
+            margin-top: 25px;
+            padding: 12px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: rgb(206, 15, 177);
+            color: beige;
+            border: 1px solid rgb(167, 16, 193);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .botao-voltar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 200, 0.5);
+        }
+
+        @keyframes coracao {
+            0%   { transform: scale(0); opacity: 1; }
+            50%  { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .coracao {
+            font-size: 30px;
+            color: hotpink;
+            animation: coracao 1s ease-out forwards;
+            position: absolute;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 6px;
+            height: 18px;
+            background-color: hotpink;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            animation: float 6s ease-in-out infinite;
+            color: hotpink;
+            font-size: 20px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Media Queries para ajustes específicos em iPhones */
+        @media only screen and (max-width: 428px) {
+            /* iPhone 12/13 Pro Max e similares */
+            body {
+                background-size: 600px;
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .container {
+                padding: 25px 20px;
+            }
+            
+            .container h1 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            
+            #letter-content {
+                font-size: 15px;
+                min-height: 250px;
+            }
+            
+            .botao-voltar {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (max-width: 390px) {
+            /* iPhone 12/13 e similares */
+            body {
+                background-size: 500px;
+            }
+            
+            .container h1 {
+                font-size: 20px;
+            }
+            
+            #letter-content {
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (max-height: 700px) {
+            /* Para telas mais curtas */
+            #letter-content {
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>De mim, pra você, meu amor</h1>
+        <div id="letter-content"><span class="typing-cursor"></span></div>
+        <button class="botao-voltar" onclick="window.location.href='index.html'">Voltar para o início</button>
+    </div>
+
+    <script>
+        // Efeito de digitação
+        const letterContent = `Eu olho pra tudo que a gente viveu e só consigo pensar: como é possível amar tanto alguém?\n\nDesde o dia 13 de setembro, algo em mim mudou. Como se o mundo tivesse ganhado uma nova cor, um novo ritmo… o seu. Cada detalhe seu ficou gravado em mim: o som da sua risada, o jeito que você me olha, a forma como seu carinho me acalma até nos dias mais difíceis.\n\nAmar você é como respirar fundo depois da tempestade. É ter paz no caos, é ter certeza mesmo em dias de dúvida. Você é o meu lar, mesmo quando estamos longe.\n\nE eu quero que saiba: estou aqui. Pra viver cada sonho com você, pra segurar sua mão nos altos e baixos, pra sorrir e recomeçar, pra cuidar de você como quem cuida da coisa mais preciosa do mundo.\n\nA gente não é perfeito, mas o que temos é real. E é nisso que eu acredito todos os dias. No nosso amor, no nosso futuro, na nossa história.\n\nEu te amo mais do que já consegui dizer em palavras. E se o universo me perguntasse o que eu escolheria viver mil vezes… seria você. Sempre você. ❤️`;
+        
+        const element = document.getElementById('letter-content');
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < letterContent.length) {
+                // Verifica se é uma quebra de linha
+                if (letterContent.substring(i, i+2) === '\n\n') {
+                    element.innerHTML = element.innerHTML.replace(/<span class="typing-cursor"><\/span>/g, '');
+                    element.innerHTML += '<br><br><span class="typing-cursor"></span>';
+                    i += 2;
+                } else {
+                    element.innerHTML = element.innerHTML.replace(/<span class="typing-cursor"><\/span>/g, '');
+                    element.innerHTML += letterContent.charAt(i) + '<span class="typing-cursor"></span>';
+                    i++;
+                }
+                
+                // Rolagem automática suave apenas para mobile
+                if (window.innerWidth <= 768) {
+                    window.scrollTo({
+                        top: document.body.scrollHeight,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Velocidade de digitação (aleatória para parecer mais natural)
+                const speed = Math.random() * 50 + 20;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Remove o cursor quando terminar
+                element.innerHTML = element.innerHTML.replace(/<span class="typing-cursor"><\/span>/g, '');
+                // Inicia os corações flutuantes quando o texto terminar
+                createHearts();
+            }
+        }
+        
+        // Cria corações flutuantes otimizados para mobile
+        function createHearts() {
+            const heartCount = window.innerWidth <= 428 ? 10 : 15; // Menos corações em telas pequenas
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                
+                // Posição aleatória na parte inferior
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.bottom = '-50px';
+                
+                // Tamanho aleatório menor em mobile
+                const size = window.innerWidth <= 428 ? 
+                    Math.random() * 15 + 8 : 
+                    Math.random() * 20 + 10;
+                heart.style.fontSize = size + 'px';
+                
+                // Duração da animação
+                const duration = Math.random() * 3 + 4;
+                heart.style.animationDuration = duration + 's';
+                
+                document.body.appendChild(heart);
+                
+                // Remove o coração após a animação terminar
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }, window.innerWidth <= 428 ? 500 : 300); // Intervalo maior em mobile
+        }
+        
+        // Inicia o efeito de digitação quando a página carrega
+        window.onload = function() {
+            // Começa com o cursor piscando
+            element.innerHTML = '<span class="typing-cursor"></span>';
+            // Inicia a digitação após 1 segundo
+            setTimeout(typeWriter, 1000);
+        };
+        
+        // Função para criar explosão de corações otimizada para mobile
+        function criarExplosaoDeAmor(x, y) {
+            const explosao = document.createElement('div');
+            explosao.style.position = 'fixed';
+            explosao.style.left = x + 'px';
+            explosao.style.top = y + 'px';
+            explosao.style.transform = 'translate(-50%, -50%)';
+            explosao.style.pointerEvents = 'none';
+            explosao.style.zIndex = '9999';
+            
+            const numHearts = window.innerWidth <= 428 ? 12 : 20; // Menos corações em mobile
+            
+            for (let i = 0; i < numHearts; i++) {
+                setTimeout(() => {
+                    const coracao = document.createElement('div');
+                    coracao.innerHTML = '❤️';
+                    coracao.classList.add('coracao');
+                    
+                    // Posição aleatória ao redor do ponto de clique
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * (window.innerWidth <= 428 ? 80 : 100) + 50;
+                    const xOffset = Math.cos(angle) * distance;
+                    const yOffset = Math.sin(angle) * distance;
+                    
+                    coracao.style.left = xOffset + 'px';
+                    coracao.style.top = yOffset + 'px';
+                    
+                    // Tamanho menor em mobile
+                    coracao.style.fontSize = window.innerWidth <= 428 ? '25px' : '30px';
+                    
+                    explosao.appendChild(coracao);
+                    
+                    // Remove o coração após a animação terminar
+                    setTimeout(() => {
+                        coracao.remove();
+                    }, 1000);
+                }, i * 50);
+            }
+            
+            document.body.appendChild(explosao);
+            
+            // Remove a explosão após um tempo
+            setTimeout(() => {
+                explosao.remove();
+            }, 1500);
+        }
+        
+        // Criar explosão de corações ao clicar na página (otimizado para touch)
+        document.addEventListener('click', function(e) {
+            criarExplosaoDeAmor(e.clientX, e.clientY);
+        });
+        
+        // Para dispositivos touch
+        document.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            criarExplosaoDeAmor(touch.clientX, touch.clientY);
+        }, { passive: false });
+    </script>
+</body>
+</html>

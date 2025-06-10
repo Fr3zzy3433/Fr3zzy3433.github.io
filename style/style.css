@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  margin: 0;
+  background-image: url(/assets/hellokit.png);
+  background-size: 1000px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Archivo', sans-serif;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+
+.container {
+  background-color: rgb(38, 38, 38);
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(206, 15, 177, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  border: 1px solid rgb(167, 16, 193);
+  user-select: none;
+}
+
+.container h1,
+.container p {
+  color: beige;
+}
+
+.botao-container,
+.botao-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.botao-container button,
+.botao-wrapper button {
+  margin-top: 10px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgb(206, 15, 177);
+  color: beige;
+  border: 1px solid rgb(167, 16, 193);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botao-container button:hover,
+.botao-wrapper button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 200, 0.5);
+}
+
+@keyframes coracao {
+  0%   { transform: scale(0); opacity: 1; }
+  50%  { transform: scale(1.5); opacity: 0.7; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+#explosao-de-amor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.coracao {
+  font-size: 40px;
+  color: hotpink;
+  animation: coracao 1s ease-out forwards;
+  position: absolute;
+}
+
+.amor-barra {
+  width: 300px;
+  height: 25px;
+  background-color: #333;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid hotpink;
+  position: relative;
+  margin-top: 15px;
+}
+
+.amor-barra::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: hotpink;
+  border-radius: 20px;
+  transition: width 4s linear;
+}
+
+.amor-barra.enchendo::before {
+  width: 100%;
+}
+
+#textoBarra {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  font-size: 13px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgb(206, 15, 177);
+  color: beige;
+  border: 1px solid rgb(167, 16, 193);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 200, 0.5);
+}
